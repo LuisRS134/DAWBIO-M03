@@ -1,0 +1,73 @@
+// ZOLTAR SPEAKS!
+
+#include <stdio.h>
+#include <time.h>
+
+int main(void) {
+	int opcio;
+	int mes, any, zodiac, fortune;
+	int aleatori;
+	
+	printf("Zoltar Speaks!\n");
+	printf("1. Demana un desig\n");
+	printf("2. Obrir una galeta de la fortuna\n");
+	printf("Selecciona una opcio (1 o 2): ");
+	scanf("%d", &opcio);
+	
+	if(opcio==1) {
+		// 1. Demana un desig
+		printf("ZOLTAR Demana el teu desig> ");
+		scanf("\n");
+		
+		
+		srand(time(NULL));
+		aleatori = rand()%2;
+
+		if(aleatori==0) {
+			printf("El teu desig SI es complira.\n");
+		} else {
+			printf("El teu desig NO es complira.\n");
+		}
+	} else {
+		// 2. Obrir una galeta de la fortuna
+
+		printf("Introdueix la teva data de naixement (format: mes/any)> ");
+		scanf("%d/%d", &mes, &any);
+		
+		// C�lcul del signe zodiacal
+		printf("El teu signe zodiacal es ");
+		
+		switch(mes) {
+			case 1:  zodiac=10; printf("CAPRICORN\n"); break;
+			case 2:  zodiac=11; printf("AQUARI\n"); break;
+			case 3:  zodiac=12; printf("PEIXOS\n"); break;
+			case 4:  zodiac=1; printf("ARIES\n"); break;
+			case 5:  zodiac=2; printf("TAURE\n"); break;
+			case 6:  zodiac=3; printf("BESSONS\n"); break;
+			case 7:  zodiac=4; printf("CRANC\n"); break;
+			case 8:  zodiac=5; printf("LLEO\n"); break;
+			case 9:  zodiac=6; printf("VERGE\n"); break;
+			case 10: zodiac=7; printf("BALANSA\n"); break;
+			case 11: zodiac=8; printf("ESCORPI\n"); break;
+			case 12: zodiac=9; printf("SAGITARI\n"); break;
+		}
+		// zodiac=(mes+9)%12;    <-- Opci� alternativa de calcular el zodiac
+
+		// C�lcul de la fortuna
+		fortune = (zodiac+any)%5;
+	
+		// Mostrar fortuna
+		switch(fortune) {
+			case 0: printf("Fortune: Take care of yourself first. Then help others.\n");
+					break;
+			case 1: printf("Fortune: Pursue your dreams with vigor.\n");
+					break;
+			case 2: printf("Fortune: Don't wait for success to come - go find it!\n");
+					break;
+			case 3: printf("Fortune: An exciting adventure awaits you.\n");
+					break;
+			case 4: printf("Fortune: Face the truth with dignity.\n");
+					break;
+		}
+	}
+}
